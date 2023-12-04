@@ -18,10 +18,10 @@ class AutoAcceptView(ctk.CTk):
     def bind_toggle_event(self, callback: Callable):
         self.switch.configure(command=callback)
 
-    def bind_toggle_text(self, text_var):
+    def configure_toggle_text(self, text_var):
         self.switch.configure(text=text_var)
 
-    def bind_text_color(self, text_color_var):
+    def configure_text_color(self, text_color_var):
         self.switch.configure(text_color=text_color_var)
     
     
