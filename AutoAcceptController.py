@@ -13,12 +13,10 @@ class AutoAcceptController:
         self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
     
     def toggle_off(self):
-        print("stopping scan")
         self.model.stop_scan()
         self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
         
     def toggle_on(self):
-        print("starting scan")
         self.model.run_scan()
         self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
         
@@ -35,7 +33,6 @@ class AutoAcceptController:
         return "ON" if scanning else "OFF"
     
     def on_view_closing(self):
-        print("closing")
         self.view.configure_header_text("closing app...", "yellow")
         self.view.update()
 

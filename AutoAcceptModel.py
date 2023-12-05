@@ -53,24 +53,17 @@ class AutoAcceptModel():
     def _is_match_ready(self, text) -> bool:
         for keyword in self._keywords:
                 if keyword in text:
-                    print("found keyword: ", keyword)
-                    print("text: ", text)
                     return True
         return False
 
     def _scan_for_match_ready(self):
         while self.get_scanning_state():
-            print("scanning..")
             scanned_text = self._scan_for_text(self._get_match_ready_region())
         
-
             if self._is_match_ready(scanned_text):
                 self._click_accept()
-            else:
-                print("nothing found")
 
             time.sleep(6) # arbitrary number
-
 
     def run_scan(self):
         self._set_scan_task(StoppableThread(target= self._scan_for_match_ready))
