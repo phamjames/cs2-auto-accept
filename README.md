@@ -1,7 +1,30 @@
 # cs2-auto-accept
-auto acceptor cuz im not tryna wait around for queue. not the best solution but it works given the right circumstances lol
 
-if u wanna use it u needa dl all the required modules/depdencies whatever
-and then run the app.py file.
+![image](https://github.com/phamjames/cs2-auto-accept/assets/37754596/7e88f5d0-4dfd-476f-b99e-c1f56d98116b)
 
-instructions to turn it into an executable file coming soon... 
+## Description
+
+auto acceptor cuz im not tryna wait around for queue. not the best solution but it works given the right circumstances lol.
+Basically when you toggle the app on, it will screen shot the guestimated position of where the queue pops, looks for keywords, and tries to click accept.
+
+## Getting Started
+
+### Dependencies
+* If you are downloading the .exe file, no need to download python or any required modules.
+* If not downloading the .exe file, you are going to need to download python and all required modules. lol.
+
+### Installing
+* On the right side of this page just look for the "Release" section.
+* Just download that and run the .exe file
+
+### Executing program
+* Just run the .exe file
+* If not the .exe, you will need to run the App.py file
+
+## Authors
+Contributors names and contact info
+ex. phamjames
+
+## Version History
+* 1.0.0
+    * Initial Release
