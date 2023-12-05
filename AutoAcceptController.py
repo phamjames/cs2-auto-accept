@@ -10,24 +10,21 @@ class AutoAcceptController:
         self._toggle_text_var = StringVar(self.view, "OFF")
         self._text_color_var = "red"
         self.view.bind_toggle_event(self.toggle_event)
-        self.view.configure_text_color(self.get_text_color_var())
-        self.view.configure_toggle_text(self.get_toggle_text_var())
-
-
+        self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
+    
+    def toggle_off(self):
+        print("stopping scan")
+        self.model.stop_scan()
+        self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
+        
+    def toggle_on(self):
+        print("starting scan")
+        self.model.run_scan()
+        self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
     def toggle_event(self):
-        print("toggled")
-        scanning = self.model.get_scanning_state()
-        if not scanning:
-            print("starting scan")
-            self.model.run_scan()
-            self.view.configure_text_color(self.get_text_color_var())
-            self.view.configure_toggle_text(self.get_toggle_text_var())
-        else:
-            print("stopping scan")
-            self.model.stop_scan()
-            self.view.configure_text_color(self.get_text_color_var())
-            self.view.configure_toggle_text(self.get_toggle_text_var())
-
+        scan_running = self.model.get_scanning_state()
+        self.toggle_off() if scan_running else self.toggle_on()
+    
     def get_text_color_var(self):
         scanning = self.model.get_scanning_state()
         return "green" if scanning else "red"
@@ -36,6 +33,18 @@ class AutoAcceptController:
         scanning = self.model.get_scanning_state()
         return "ON" if scanning else "OFF"
     
+    def on_view_closing(self):
+        print("closing")
+        self.view.configure_header_text("closing app...", "yellow")
+        self.view.update()
+
+        scan_running = self.model.get_scanning_state()
+        if scan_running:
+            self.model.stop_scan()
+        
+        self.view.quit()
+
     def run(self):
+        self.view.protocol("WM_DELETE_WINDOW", self.on_view_closing)
         self.view.mainloop()
 

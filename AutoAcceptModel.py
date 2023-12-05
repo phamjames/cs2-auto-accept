@@ -4,8 +4,7 @@ import numpy as np
 import pyautogui
 import math
 import pytesseract
-
-from AutoAcceptAlpha import StoppableThread
+from StoppableThread import StoppableThread
 
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
@@ -37,7 +36,7 @@ class AutoAcceptModel():
         return (self._monitor_w // 2, math.ceil(self._monitor_h // 2.5))
 
     def _click_accept(self) -> bool:
-        pyautogui.moveTo(self._get_accept_button_pos(), duration=0.5)
+        pyautogui.moveTo(self._get_accept_button_pos(), duration=.5)
         pyautogui.doubleClick()
         scanned_text = self._scan_for_text(self._get_match_ready_region())
         return 'players' in scanned_text
@@ -54,6 +53,8 @@ class AutoAcceptModel():
     def _is_match_ready(self, text) -> bool:
         for keyword in self._keywords:
                 if keyword in text:
+                    print("found keyword: ", keyword)
+                    print("text: ", text)
                     return True
         return False
 
@@ -61,15 +62,14 @@ class AutoAcceptModel():
         while self.get_scanning_state():
             print("scanning..")
             scanned_text = self._scan_for_text(self._get_match_ready_region())
-            print("text: ")
-            print(scanned_text)
+        
 
             if self._is_match_ready(scanned_text):
                 self._click_accept()
             else:
                 print("nothing found")
 
-            time.sleep(5)
+            time.sleep(6) # arbitrary number
 
 
     def run_scan(self):
@@ -80,6 +80,7 @@ class AutoAcceptModel():
     def stop_scan(self):
         self._get_scan_task().stop()
         self._set_scanning_state(is_scanning = False)
+
 
 
 
