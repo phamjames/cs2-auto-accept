@@ -21,6 +21,7 @@ class AutoAcceptController:
         print("starting scan")
         self.model.run_scan()
         self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
+        
     def toggle_event(self):
         scan_running = self.model.get_scanning_state()
         self.toggle_off() if scan_running else self.toggle_on()
