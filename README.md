@@ -27,10 +27,6 @@ There are many programs similar to this and no one has gotten VAC banned as far 
 * Just run the .exe file
 * If not the .exe, you will need to run the App.py file
 
-## Authors
-Contributors names and contact info
-ex. phamjames
-
 ## Version History
 * 1.0.0
     * Initial Release
