@@ -9,7 +9,8 @@ Basically when you toggle the app on, it will screen shot the guestimated positi
 REQUIREMENT: You need to have CS2 in the foreground, or it might click the center of your screen randomly - but no worries you can just turn it off.
 
 ## FAQ
-Q: Will I get VAC banned
+Q: Will I get VAC banned?
+
 A: Seems like the general consensus is that as long as internal files are not modified it is highly unlikely to be VAC banned. I have used it many times and have not gotten VAC banned.
 There are many programs similar to this and no one has gotten VAC banned as far as im aware. Please do your own research and use at your own discrepancy though. 
 
