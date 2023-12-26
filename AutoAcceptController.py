@@ -13,10 +13,12 @@ class AutoAcceptController:
         self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
     
     def toggle_off(self):
+        print("~~~~~~~!! SCAN STOPPING !!~~~~~~~~\n")
         self.model.stop_scan()
         self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
         
     def toggle_on(self):
+        print("~~~~~~~!! SCAN STARTING !!~~~~~~~~")
         self.model.run_scan()
         self.view.configure_toggle_text(self.get_toggle_text_var(), self.get_text_color_var())
         
